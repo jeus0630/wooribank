@@ -1,11 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import styled from "@emotion/styled";
 import "./App.css";
+import OnBoarding from "./pages/onBoarding";
+
+const AppContainer = styled.div`
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+`;
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <h1 className="text-3xl bg-blue-500 text-green-300">Hello world!</h1>;
+  return (
+    <AppContainer>
+      <OnBoarding />
+    </AppContainer>
+  );
 }
 
 export default App;
