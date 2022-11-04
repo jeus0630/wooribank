@@ -10,9 +10,12 @@ export const TotalContainer = styled.div`
 `;
 
 export const TopContainer = styled.section`
+  position: relative;
   width: 375px;
   height: 430px;
   background-color: #ffffff;
+  display: flex;
+  padding: 104px 25px 55px;
 `;
 
 export const BottomContainer = styled.section`

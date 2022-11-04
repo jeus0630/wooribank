@@ -9,6 +9,7 @@ const GoldBoxContainer = styled.div`
   padding: 25px 20px;
   background-color: rgb(247, 247, 247);
   border-radius: 12px;
+  margin-bottom: 12px;
 
   span {
     font-weight: 700;
@@ -20,6 +21,13 @@ const GoldBoxContainer = styled.div`
 
 const GoldAndWeeks = styled.div`
   display: flex;
+  align-items: center;
+  img {
+    width: 29px;
+    height: 100%;
+    margin-right: 13px;
+    object-fit: cover;
+  }
 
   span {
     font-weight: 500;
@@ -39,11 +47,7 @@ export default function GoldBox({ image, weekContent, price }: Props) {
   return (
     <GoldBoxContainer>
       <GoldAndWeeks>
-        <img
-          style={{ width: "29px", height: "17px", marginRight: "13px" }}
-          src={image}
-          alt={image}
-        />
+        <img src={image} alt={image} />
         <span>{weekContent}</span>
       </GoldAndWeeks>
       <span>{price}</span>

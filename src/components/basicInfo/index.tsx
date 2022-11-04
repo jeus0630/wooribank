@@ -23,7 +23,7 @@ export default function BasicInfo({
   return (
     <>
       <PageNumber pageNumber={pageNumber} />
-      <CheckHighlight contents={highlightText} />
+      <CheckHighlight pageNumber={pageNumber} contents={highlightText} />
       <BasicText>{basicText}</BasicText>
     </>
   );

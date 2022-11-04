@@ -4,6 +4,7 @@ const ArtBoxContainer = styled.div`
   width: 143px;
   height: 136px;
   border: 1px solid #e1e1e1;
+  margin: 5.5px;
   padding: 4px;
 
   img {
