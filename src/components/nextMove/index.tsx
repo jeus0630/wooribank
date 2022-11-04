@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
 
 const NextMoveContainer = styled.section`
+  position: absolute;
+  bottom: 46px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 325px;
   height: 56px;
-  margin-top: 64px;
+  left: 25px;
 `;
 
 const Navigation = styled.div`
