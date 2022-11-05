@@ -3,7 +3,7 @@ import "./App.css";
 import OnBoarding from "./pages/onBoarding";
 
 const AppContainer = styled.div`
-  width: 375px;
+  width: 100%;
   height: 812px;
   overflow: hidden;
 `;

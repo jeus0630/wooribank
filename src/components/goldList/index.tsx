@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { v4 } from "uuid";
 import GoldBox from "./goldBox";
 
 const GoldContainer = styled.div`
@@ -41,6 +42,7 @@ export default function GoldList() {
       {goldList.map(({ image, weekContent, price }) => {
         return (
           <GoldBox
+            key={v4()}
             image={`/images/${image}`}
             weekContent={weekContent}
             price={price}

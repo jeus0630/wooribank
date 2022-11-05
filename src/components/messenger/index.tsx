@@ -3,6 +3,8 @@ import Chat from "./chat";
 import MoneyManagementbox from "./moneyManagementbox";
 import { v4 } from "uuid";
 import ChatCircle from "./chatCircle";
+import { paginationNumberState } from "../../store";
+import { useRecoilState } from "recoil";
 
 const UserName = styled.div`
   margin-bottom: 14px;
@@ -28,6 +30,8 @@ const MessengerTechBox = styled.div`
 `;
 
 export default function Messenger() {
+  const [number] = useRecoilState(paginationNumberState);
+
   const chats = [
     "홍길동 고객님!",
     "재테크에 관심 있으신가요? 우리은행 전문가가 들려주는 금융이야기를 확인해보세요!",
@@ -41,12 +45,21 @@ export default function Messenger() {
       <ChatCircle />
       <MessengerContainer>
         <UserName>김우리 과장</UserName>
-        {chats.map((item) => {
-          return <Chat key={v4()} content={item} />;
+        {chats.map((item, index) => {
+          return (
+            <Chat
+              key={v4()}
+              content={item}
+              number={number}
+              chatIndex={index + 0.5}
+            />
+          );
         })}
         <MessengerTechBox>
           {managements.map((item) => {
-            return <MoneyManagementbox key={v4()} content={item} />;
+            return (
+              <MoneyManagementbox key={v4()} content={item} number={number} />
+            );
           })}
         </MessengerTechBox>
       </MessengerContainer>

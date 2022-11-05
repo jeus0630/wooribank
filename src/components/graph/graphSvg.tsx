@@ -43,8 +43,8 @@ export default function GraphSVG() {
           y2="314"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DC3C2C" stop-opacity="0.5" />
-          <stop offset="1" stop-color="#DC3C2C" stop-opacity="0" />
+          <stop stopColor="#DC3C2C" stopOpacity="0.5" />
+          <stop offset="1" stopColor="#DC3C2C" stopOpacity="0" />
         </linearGradient>
       </defs>
     </SvgContainer>

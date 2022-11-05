@@ -3,3 +3,9 @@
   padding: 0;
   margin: 0;
 }
+
+.swiper-pagination {
+  position: absolute;
+  left: -130px !important;
+  bottom: 64px !important;
+}

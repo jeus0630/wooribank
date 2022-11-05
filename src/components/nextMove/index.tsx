@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useSwiper } from "swiper/react";
 
 const NextMoveContainer = styled.section`
   position: absolute;
@@ -9,12 +10,13 @@ const NextMoveContainer = styled.section`
   width: 325px;
   height: 56px;
   left: 25px;
+  z-index: 10;
 `;
 
 const Navigation = styled.div`
   width: 90px;
   height: 10px;
-  background-color: #00000054;
+  background-color: rgba(0, 0, 0, 0);
 `;
 
 const NextButton = styled.button`
@@ -29,6 +31,7 @@ const NextButton = styled.button`
   color: rgba(0, 0, 0, 0.6);
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 export default function NextMove() {
@@ -36,7 +39,7 @@ export default function NextMove() {
     <>
       <NextMoveContainer>
         <Navigation />
-        <NextButton>다음</NextButton>
+        <NextButton className="nextButton">다음</NextButton>
       </NextMoveContainer>
     </>
   );

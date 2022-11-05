@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useEffect, useRef } from "react";
 
 const MoneyManagementboxContainer = styled.div`
   display: flex;
@@ -19,15 +20,28 @@ const MoneyManagementboxContainer = styled.div`
   border-radius: 9px;
   color: #000;
   background-color: #fff;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 2.5s;
 `;
 
 interface Props {
   content: string;
+  number: number;
 }
 
-export default function MoneyManagementbox({ content }: Props) {
+export default function MoneyManagementbox({ content, number }: Props) {
+  const styleRef = useRef<any>();
+
+  useEffect(() => {
+    if (number === 0) {
+      styleRef.current.style.opacity = 1;
+      styleRef.current.style.transform = "translateY(0px)";
+    }
+  }, []);
+
   return (
-    <MoneyManagementboxContainer content={content}>
+    <MoneyManagementboxContainer ref={styleRef} content={content}>
       {content}
     </MoneyManagementboxContainer>
   );

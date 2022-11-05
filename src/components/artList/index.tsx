@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { v4 } from "uuid";
 import ArtBox from "./artBox";
 
 const ArtListContainer = styled.div`
@@ -17,7 +18,7 @@ export default function ArtList() {
   return (
     <ArtListContainer>
       {artList.map((item) => {
-        return <ArtBox image={`/images/${item}`} />;
+        return <ArtBox key={v4()} image={`/images/${item}`} />;
       })}
     </ArtListContainer>
   );
