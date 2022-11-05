@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import { useEffect, useState } from "react";
 import GraphSVG from "./graphSvg";
 
 const GraphContainer = styled.div`
@@ -58,6 +59,21 @@ const ArrowUp = styled(ArrowDropUpIcon)`
 `;
 
 export default function Graph() {
+  const [price, setPrice] = useState<string>("520,000");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const risePrice = Number(price.split(",").join("")) + 1;
+      const correction =
+        String(risePrice).slice(0, 3) + "," + String(risePrice).slice(3);
+      setPrice(correction);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [price]);
+
   return (
     <GraphContainer>
       <GraphInfoContainer>
@@ -71,7 +87,7 @@ export default function Graph() {
       <GraphSVG />
       <GraphCenterTextContainer>
         <GraphCenterValue>우리 건물의 가치</GraphCenterValue>
-        <GraphCenterPrice>+ 520,000원</GraphCenterPrice>
+        <GraphCenterPrice>+ {price}원</GraphCenterPrice>
       </GraphCenterTextContainer>
     </GraphContainer>
   );

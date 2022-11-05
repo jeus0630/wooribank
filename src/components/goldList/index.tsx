@@ -39,10 +39,11 @@ export default function GoldList() {
 
   return (
     <GoldContainer>
-      {goldList.map(({ image, weekContent, price }) => {
+      {goldList.map(({ image, weekContent, price }, index) => {
         return (
           <GoldBox
             key={v4()}
+            boxIndex={index}
             image={`/images/${image}`}
             weekContent={weekContent}
             price={price}
