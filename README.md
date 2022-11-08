@@ -22,7 +22,7 @@
 
 
 ## Team 5
-🌟 **Team Leader) 윤진아 <br />**
+🌟 **Team Leader, Designer) 윤진아 <br />**
 🌟 **Product Manager) 조은빈 <br />**
 🌟 **Frontend Developer) 김우석 <br />**
 🌟 **Frontend Developer) 함제우 <br />**
