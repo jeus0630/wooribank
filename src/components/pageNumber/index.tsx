@@ -7,6 +7,7 @@ interface Props {
 const PageNumberContainer = styled.div`
   margin-top: 14px;
   font-size: 30px;
+  font-weight: 700;
   line-height: 39px;
   color: rgb(80, 80, 80);
 `;

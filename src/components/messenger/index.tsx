@@ -5,23 +5,29 @@ import { v4 } from "uuid";
 import ChatCircle from "./chatCircle";
 import { paginationNumberState } from "../../store";
 import { useRecoilState } from "recoil";
-
-const UserName = styled.div`
-  margin-bottom: 14px;
-  font-size: 16px;
-  letter-spacing: -0.48px;
-`;
+import { useEffect, useRef } from "react";
 
 const MessengerTotalContainer = styled.div`
   position: absolute;
   bottom: 55px;
   display: flex;
   justify-content: center;
+  opacity: 0;
+  transition: 2s;
 `;
 
 const MessengerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: 12px;
   margin-top: 10px;
+`;
+
+const UserName = styled.div`
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.48px;
 `;
 
 const MessengerTechBox = styled.div`
@@ -31,6 +37,7 @@ const MessengerTechBox = styled.div`
 
 export default function Messenger() {
   const [number] = useRecoilState(paginationNumberState);
+  const styleRef = useRef<any>();
 
   const chats = [
     "홍길동 고객님!",
@@ -40,19 +47,24 @@ export default function Messenger() {
 
   const managements = ["부동산테크", "금테크", "아트테크"];
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      styleRef.current.style.opacity = 1;
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
+
   return (
-    <MessengerTotalContainer>
+    <MessengerTotalContainer ref={styleRef}>
       <ChatCircle />
       <MessengerContainer>
         <UserName>김우리 과장</UserName>
         {chats.map((item, index) => {
           return (
-            <Chat
-              key={v4()}
-              content={item}
-              number={number}
-              chatIndex={index + 0.5}
-            />
+            <Chat key={v4()} content={item} number={number} chatIndex={index} />
           );
         })}
         <MessengerTechBox>

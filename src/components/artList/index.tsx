@@ -18,9 +18,7 @@ export default function ArtList() {
   return (
     <ArtListContainer>
       {artList.map((item, index) => {
-        return (
-          <ArtBox key={v4()} image={`/images/${item}`} artIndex={index + 0.5} />
-        );
+        return <ArtBox key={v4()} image={`/images/${item}`} artIndex={index} />;
       })}
     </ArtListContainer>
   );

@@ -16,14 +16,9 @@ const GoldContainer = styled.div`
 export default function GoldList() {
   const goldList = [
     {
-      image: "gold1.png",
-      weekContent: "1주차",
-      price: "100원",
-    },
-    {
-      image: "gold2.png",
-      weekContent: "2주차",
-      price: "200원",
+      image: "gold4.png",
+      weekContent: "4주차",
+      price: "400원",
     },
     {
       image: "gold3.png",
@@ -31,11 +26,16 @@ export default function GoldList() {
       price: "300원",
     },
     {
-      image: "gold4.png",
-      weekContent: "4주차",
-      price: "400원",
+      image: "gold2.png",
+      weekContent: "2주차",
+      price: "200원",
     },
-  ].reverse();
+    {
+      image: "gold1.png",
+      weekContent: "1주차",
+      price: "100원",
+    },
+  ];
 
   return (
     <GoldContainer>

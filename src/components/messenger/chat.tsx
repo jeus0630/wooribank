@@ -3,25 +3,18 @@ import { useEffect, useRef } from "react";
 import styles from "../../styles";
 
 const ChatContainer = styled.div`
+  width: fit-content;
   max-width: 259px;
   background-color: ${styles.pageTopsideColor};
   padding: 10px 14px;
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 12.5px;
   line-height: 20px;
   border-radius: 9px;
   color: #fff;
-  opacity: 0.2;
-  transform: translateY(20px);
-  transition: ${({
-    pageNumber,
-    chatIndex,
-  }: {
-    pageNumber: number;
-    chatIndex: number;
-  }) => {
-    return pageNumber === 0 ? `${chatIndex}s` : "1s";
-  }};
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1.5s;
 `;
 
 interface Props {
@@ -35,15 +28,31 @@ export default function Chat({ content, number, chatIndex }: Props) {
   const findWordIndex = content.split("").findIndex((item) => item === "?");
 
   useEffect(() => {
-    if (number === 0) {
-      styleRef.current.style.opacity = 1;
-      styleRef.current.style.transform = "translateY(0px)";
+    let timeout: NodeJS.Timeout;
+    if (chatIndex === 0) {
+      timeout = setTimeout(() => {
+        styleRef.current.style.opacity = 1;
+        styleRef.current.style.transform = "translateY(0px)";
+      }, 2000);
+    } else if (chatIndex === 1) {
+      timeout = setTimeout(() => {
+        styleRef.current.style.opacity = 1;
+        styleRef.current.style.transform = "translateY(0px)";
+      }, 3000);
+    } else {
+      timeout = setTimeout(() => {
+        styleRef.current.style.opacity = 1;
+        styleRef.current.style.transform = "translateY(0px)";
+      }, 4000);
     }
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   if (findWordIndex !== -1) {
     return (
-      <ChatContainer ref={styleRef} pageNumber={number} chatIndex={chatIndex}>
+      <ChatContainer ref={styleRef}>
         {content.slice(0, findWordIndex + 1)}
         <br />
         {content.slice(findWordIndex + 1)}
@@ -51,9 +60,5 @@ export default function Chat({ content, number, chatIndex }: Props) {
     );
   }
 
-  return (
-    <ChatContainer ref={styleRef} pageNumber={number} chatIndex={chatIndex}>
-      {content}
-    </ChatContainer>
-  );
+  return <ChatContainer ref={styleRef}>{content}</ChatContainer>;
 }

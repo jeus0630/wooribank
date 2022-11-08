@@ -3,7 +3,7 @@ import styles from "../styles";
 
 const HighlightText = styled.span`
   margin-top: 23px;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 39px;
   width: ${({ pageNumber }: { pageNumber: string }) => {
     if (pageNumber === "4") {
@@ -11,11 +11,13 @@ const HighlightText = styled.span`
     } else if (pageNumber === "2") {
       return "190px";
     }
-    return "276px";
+    return "274px";
   }};
   color: ${styles.baseColor};
+  font-weight: 600;
 
   span {
+    font-weight: 600;
     color: ${styles.HighlightColor};
   }
 `;

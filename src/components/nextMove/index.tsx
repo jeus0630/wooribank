@@ -36,11 +36,9 @@ const NextButton = styled.button`
 
 export default function NextMove() {
   return (
-    <>
-      <NextMoveContainer>
-        <Navigation />
-        <NextButton className="nextButton">다음</NextButton>
-      </NextMoveContainer>
-    </>
+    <NextMoveContainer>
+      <Navigation />
+      <NextButton className="nextButton">다음</NextButton>
+    </NextMoveContainer>
   );
 }

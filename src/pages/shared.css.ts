@@ -6,7 +6,13 @@ export const TotalContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 812px;
+  transition: 2s;
+  opacity: 0;
+
+  .swiper .swiper-pagination-bullet {
+    background-color: ${styles.baseColor};
+  }
 `;
 
 export const TopContainer = styled.section`

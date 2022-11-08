@@ -24,11 +24,11 @@ const GoldBoxContainer = styled.div`
     return "0.2s";
   }};
   transform: translateY(20px);
-  opacity: 0.2;
+  opacity: 0;
 `;
 
 const PriceText = styled.span`
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   line-height: 19.2px;
   color: #163b7c;
@@ -68,8 +68,39 @@ export default function GoldBox({
   const styleRef = useRef<any>();
 
   useEffect(() => {
-    styleRef.current.style.opacity = 1;
-    styleRef.current.style.transform = "translateY(0px)";
+    if (boxIndex === 3) {
+      const timeout = setTimeout(() => {
+        styleRef.current.style.opacity = 1;
+        styleRef.current.style.transform = "translateY(0px)";
+      }, 1000 / 2);
+      return () => {
+        clearTimeout(timeout);
+      };
+    } else if (boxIndex === 2) {
+      const timeout = setTimeout(() => {
+        styleRef.current.style.opacity = 1;
+        styleRef.current.style.transform = "translateY(0px)";
+      }, 2000 / 2);
+      return () => {
+        clearTimeout(timeout);
+      };
+    } else if (boxIndex === 1) {
+      const timeout = setTimeout(() => {
+        styleRef.current.style.opacity = 1;
+        styleRef.current.style.transform = "translateY(0px)";
+      }, 3000 / 2);
+      return () => {
+        clearTimeout(timeout);
+      };
+    } else {
+      const timeout = setTimeout(() => {
+        styleRef.current.style.opacity = 1;
+        styleRef.current.style.transform = "translateY(0px)";
+      }, 4000 / 2);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
   }, []);
 
   return (

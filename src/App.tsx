@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
 import "./App.css";
-import OnBoarding from "./pages/onBoarding";
+import BeforeGuide from "./pages/beforeGuide";
+import Splash from "./pages/splash";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -9,9 +11,21 @@ const AppContainer = styled.div`
 `;
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <AppContainer>
-      <OnBoarding />
+      {loading ? (
+        <Splash />
+      ) : (
+        <BeforeGuide loading={loading} setLoading={setLoading} />
+      )}
     </AppContainer>
   );
 }

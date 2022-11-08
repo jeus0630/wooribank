@@ -5,8 +5,9 @@ import PageNumber from "../pageNumber";
 const BasicText = styled.span`
   width: 308px;
   margin-top: 18px;
-  font-size: 16px;
+  font-size: 14px;
   color: rgba(0, 0, 0, 0.52);
+  font-weight: medium;
 `;
 
 interface Props {

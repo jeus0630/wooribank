@@ -6,12 +6,19 @@ import swiperList from "../../swiperList";
 import { v4 } from "uuid";
 import { useRecoilState } from "recoil";
 import { paginationNumberState } from "../../store";
+import { useEffect, useRef } from "react";
+import PageMove from "../../components/nextMove/pageMove";
 
 export default function OnBoarding() {
-  const [, setNumber] = useRecoilState(paginationNumberState);
+  const [number, setNumber] = useRecoilState(paginationNumberState);
+  const styleRef = useRef<any>();
+
+  useEffect(() => {
+    styleRef.current.style.opacity = 1;
+  }, []);
 
   return (
-    <TotalContainer>
+    <TotalContainer ref={styleRef}>
       <Swiper
         modules={[Pagination, Navigation]}
         navigation={{
@@ -23,7 +30,9 @@ export default function OnBoarding() {
           width: "100%",
           height: "100%",
         }}
-        onSlideChange={({ activeIndex }) => setNumber(activeIndex)}
+        onSlideChange={({ activeIndex }) => {
+          setNumber(activeIndex);
+        }}
       >
         {swiperList.map(({ topComponent, bottomComponent }) => {
           return (
@@ -43,7 +52,7 @@ export default function OnBoarding() {
           );
         })}
       </Swiper>
-      <NextMove />
+      {number === 3 ? <PageMove /> : <NextMove />}
     </TotalContainer>
   );
 }

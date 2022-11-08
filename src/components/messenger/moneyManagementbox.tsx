@@ -17,6 +17,7 @@ const MoneyManagementboxContainer = styled.div`
   margin-right: 7px;
   border: 1px solid rgba(0, 0, 0, 10%);
   font-size: 12px;
+  font-weight: 500;
   border-radius: 9px;
   color: #000;
   background-color: #fff;
@@ -34,10 +35,13 @@ export default function MoneyManagementbox({ content, number }: Props) {
   const styleRef = useRef<any>();
 
   useEffect(() => {
-    if (number === 0) {
+    const timeout = setTimeout(() => {
       styleRef.current.style.opacity = 1;
       styleRef.current.style.transform = "translateY(0px)";
-    }
+    }, 5000);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (

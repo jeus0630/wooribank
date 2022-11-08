@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GraphSVG from "./graphSvg";
 
 const GraphContainer = styled.div`
@@ -9,6 +9,8 @@ const GraphContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  transition: 2s;
 `;
 
 const GraphCenterTextContainer = styled.div`
@@ -28,6 +30,7 @@ const GraphCenterValue = styled.span`
 const GraphCenterPrice = styled.span`
   margin-top: 11px;
   font-size: 40px;
+  font-weight: 600;
 `;
 
 const GraphInfoContainer = styled.div`
@@ -60,22 +63,33 @@ const ArrowUp = styled(ArrowDropUpIcon)`
 
 export default function Graph() {
   const [price, setPrice] = useState<string>("520,000");
+  const [stopTime, setStopTime] = useState<number>(0);
+  const styleRef = useRef<any>();
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      const risePrice = Number(price.split(",").join("")) + 1;
-      const correction =
-        String(risePrice).slice(0, 3) + "," + String(risePrice).slice(3);
-      setPrice(correction);
-    }, 1000);
+    setTimeout(() => {
+      styleRef.current.style.opacity = 1;
+    }, 500);
+  }, []);
 
-    return () => {
-      clearTimeout(timeout);
-    };
+  useEffect(() => {
+    if (stopTime < 10) {
+      setStopTime(stopTime + 1);
+      const timeout = setTimeout(() => {
+        const risePrice = Number(price.split(",").join("")) + 1;
+        const correction =
+          String(risePrice).slice(0, 3) + "," + String(risePrice).slice(3);
+        setPrice(correction);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
   }, [price]);
 
   return (
-    <GraphContainer>
+    <GraphContainer ref={styleRef}>
       <GraphInfoContainer>
         <GraphInfoBuilding>우리빌딩</GraphInfoBuilding>
         <GraphInfoPrice>52,350</GraphInfoPrice>
