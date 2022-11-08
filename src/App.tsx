@@ -1,15 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
+import "./App.css";
+import BeforeGuide from "./pages/beforeGuide";
+import Splash from "./pages/splash";
+
+const AppContainer = styled.div`
+  width: 100%;
+  height: 812px;
+  overflow: hidden;
+`;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <AppContainer>
+      {loading ? (
+        <Splash />
+      ) : (
+        <BeforeGuide loading={loading} setLoading={setLoading} />
+      )}
+    </AppContainer>
+  );
 }
 
-export default App
+export default App;
